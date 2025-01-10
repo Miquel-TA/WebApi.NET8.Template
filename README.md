@@ -1,5 +1,7 @@
 # MyAppSolution
 
+Take a look at the generated solution - https://github.com/Miquel-TA/WebApi.NET8.Template/tree/master
+
 A .NET 8 Web API template using DDD with four projects:
 - **Cross**: Shared `User` model, `JwtUtils` & `BcryptUtils`.
 - **Logic**: Business logic with Interfaces & Implementations, DI-ready.
