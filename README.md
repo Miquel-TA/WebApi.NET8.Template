@@ -1,24 +1,22 @@
-# MyAppSolution
+# WebApiTemplateGenerator
 
-This is a .NET 8 Web API solution with a clean, one-project-per-layer DDD structure:
+Creates a full .NET 8 Web API solution with a DDD architecture:
+- **Cross** (Models & Utils)
+- **Logic** (Interfaces & Implementations)
+- **Repository** (Interfaces & Implementations)
+- **Presentation** (WebAPI)
 
-- **Cross**: Shared Models (`User`), and Utils (`JwtUtils`, `BcryptUtils`)
-- **Logic**: Business rules, interfaces, and implementations (with dependencies for EF).
-- **Repository**: EF Core context and repository. InMemory database by default.
-- **Presentation**: ASP.NET Core Web API with Swagger, JWT auth, and seeded `admin` user.
+## Features
+- **JWT** authentication (via Microsoft.AspNetCore.Authentication.JwtBearer).
+- **Dependency Injection** for repository & logic layers.
+- **Automatic references** (each project references Cross, etc.).
+- **Pinned packages**: EF Core (8.0.11), JWT (8.3.0), bcrypt (4.0.3), Serilog (8.0.3), Swashbuckle (7.2.0 / 8.0.2).
+- **InMemory** EF database seeded with a random admin password.
+- **CRUD** endpoints for `User` entity in the Repository & Logic.
+- **Random** secrets and admin password stored in `appsettings.json`.
 
-### Key Points
-
-1. **appsettings.json** holds your secrets (admin password, JWT key, issuer). If missing or empty, the app throws an exception.
-2. **InMemory** EF for easy local testing. Edit `ServiceRegistration` to switch to SQL Server or another provider.
-3. **Random admin password** is stored in the `appsettings.json` automatically. The console prints it at startup.
-4. **JWT**: The key and issuer are also in `appsettings.json`. They must not be empty for production.
-
-### Usage
-
-- **`dotnet run`** in `MyApp.Presentation`.
-- **Swagger** at `https://localhost:<port>/swagger`.
-- `[AllowAnonymous]` login endpoint to get your JWT token.  
-- `[Authorize]` endpoints for CRUD on the user repository.
-
-Enjoy your DDD-based Web API template!
+## Usage
+1. **Run** this generator console app.
+2. **Enter** a path when prompted.
+3. **Open** the newly created `MyAppSolution.sln`.
+4. **Build** & **run** `MyApp.Presentation`.
